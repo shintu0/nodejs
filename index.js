@@ -46,6 +46,15 @@ try {
   });
 
   /**
+   * Endpoint:http://localhost:7000/<any unimplemented> (Help)
+   * Access: Public
+   * METHOD: GET
+   */
+  app.get("/*", (req, res) => {
+    res.status(200).sendFile(`${publicPath}/not-found.html`);
+  });
+
+  /**
    * Started server on Specific ports
    */
   app.listen(process.env.PORT, () => {
