@@ -37,7 +37,7 @@ try {
   });
    //can be used to serve files directly and with custom url
   /**
-   * Endpoint:http://localhost:7000/help (Help)
+   * Endpoint:http://localhost:7000/faq (Help)
    * Access: Public
    * METHOD: GET
    */
