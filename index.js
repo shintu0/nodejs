@@ -3,6 +3,7 @@ import express from "express";
 import * as dotenv from "dotenv";
 import path from "path";
 import userRouter from "./src/routes/users/index.js";
+import { adminRouter } from "./src/routes/users/admin.js";
 
 try {
   const app = express(); //Initialized express app
@@ -68,6 +69,7 @@ node --experimental-modules myCode.js
 
   //routes
   app.use("/users", userRouter);
+  app.use("/admin", adminRouter);
 
   /**
    * Endpoint:http://localhost:7000/<any unimplemented routes> (Help)

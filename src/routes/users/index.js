@@ -3,6 +3,7 @@ import restrictAge from "../../middleware/restrictAge.js";
 
 const userRouter = express.Router();
 
+
 //route level middleware
 userRouter.use(restrictAge);
 
@@ -13,6 +14,9 @@ userRouter.use(restrictAge);
 userRouter.post("/", (req, res) => {
     res.status(200).send("Welcome to user");
 });
+
+
+
 
 
 export default userRouter;
