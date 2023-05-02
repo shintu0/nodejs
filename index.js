@@ -4,12 +4,13 @@ import * as dotenv from "dotenv";
 import path from "path";
 import userRouter from "./src/routes/users/index.js";
 
-
-
-
 try {
   const app = express(); //Initialized express app
   dotenv.config(); //configuring env variables
+  // Parse JSON bodies
+  app.use(express.json());
+  // Parse urlencoded bodies
+  app.use(express.urlencoded({ extended: true }));
   app.set("view engine", "ejs"); //set template engine
   const publicPath = path.join(process.cwd(), "public"); //path to public folder
   //to access the view on browser go to root/<filename in public folder>
@@ -66,7 +67,7 @@ node --experimental-modules myCode.js
   });
 
   //routes
-  app.use("/users",userRouter);
+  app.use("/users", userRouter);
 
   /**
    * Endpoint:http://localhost:7000/<any unimplemented routes> (Help)
