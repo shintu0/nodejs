@@ -1,11 +1,14 @@
 /**Important import */
 import express from "express";
 import * as dotenv from "dotenv";
+import path from "path";
 
 try {
   const app = express(); //Initialized express app
   dotenv.config(); //configuring env variables
-
+  const publicPath = path.join(process.cwd(), "public"); //path to public folder
+  //to access the view on browser go to root/<filename in public folder>
+  app.use(express.static(publicPath)); //for rendering static files
   /**
    * Endpoint:http://localhost:7000 (Root)
    * Access: Public
@@ -13,6 +16,24 @@ try {
    */
   app.get("/", (req, res) => {
     res.status(200).json({ message: "Hello" });
+  });
+
+  /**
+   * Endpoint:http://localhost:7000/about (About)
+   * Access: Public
+   * METHOD: GET
+   */
+  app.get("/about", (req, res) => {
+    res.status(200).send("<h1>Hello, We are Nerds<h1>");
+  });
+
+  /**
+   * Endpoint:http://localhost:7000/help (Help)
+   * Access: Public
+   * METHOD: GET
+   */
+  app.get("/help", (req, res) => {
+    res.status(200).send("Hello, How can we help you!!!");
   });
 
   /**
