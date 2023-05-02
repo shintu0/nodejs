@@ -2,6 +2,10 @@
 import express from "express";
 import * as dotenv from "dotenv";
 import path from "path";
+import userRouter from "./src/routes/users/index.js";
+
+
+
 
 try {
   const app = express(); //Initialized express app
@@ -11,8 +15,8 @@ try {
   //to access the view on browser go to root/<filename in public folder>
   app.use(express.static(publicPath)); //for rendering static files
   /**
-   * Endpoint:http://localhost:7000 (Root)
-   * Access: Public
+node --experimental-modules myCode.js
+   * ACCESS: PUBLIC
    * METHOD: GET
    */
   app.get("/", (req, res) => {
@@ -21,7 +25,7 @@ try {
 
   /**
    * Endpoint:http://localhost:7000/about (About)
-   * Access: Public
+   * ACCESS: PUBLIC
    * METHOD: GET
    */
   app.get("/about", (req, res) => {
@@ -61,8 +65,11 @@ try {
     });
   });
 
+  //routes
+  app.use("/users",userRouter);
+
   /**
-   * Endpoint:http://localhost:7000/<any unimplemented> (Help)
+   * Endpoint:http://localhost:7000/<any unimplemented routes> (Help)
    * Access: Public
    * METHOD: GET
    */
