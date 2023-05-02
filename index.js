@@ -6,6 +6,7 @@ import path from "path";
 try {
   const app = express(); //Initialized express app
   dotenv.config(); //configuring env variables
+  app.set("view engine", "ejs"); //set template engine
   const publicPath = path.join(process.cwd(), "public"); //path to public folder
   //to access the view on browser go to root/<filename in public folder>
   app.use(express.static(publicPath)); //for rendering static files
@@ -35,7 +36,7 @@ try {
   app.get("/help", (req, res) => {
     res.status(200).send("Hello, How can we help you!!!");
   });
-   //can be used to serve files directly and with custom url
+  //can be used to serve files directly and with custom url
   /**
    * Endpoint:http://localhost:7000/faq (Help)
    * Access: Public
@@ -43,6 +44,21 @@ try {
    */
   app.get("/faq", (req, res) => {
     res.status(200).sendFile(`${publicPath}/faq.html`);
+  });
+
+  //can be used to serve ejs(template) files directly and with custom url
+  /**
+   * Endpoint:http://localhost:7000/landing (Help)
+   * Access: Public
+   * METHOD: GET
+   */
+  app.get("/landing", (req, res) => {
+    res.status(200).render(`landing`, {
+      data: [
+        { name: "Tony", role: "Iron Man" },
+        { name: "Peter", role: "Spider Man" },
+      ],
+    });
   });
 
   /**
