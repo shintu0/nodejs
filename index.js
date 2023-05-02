@@ -35,6 +35,15 @@ try {
   app.get("/help", (req, res) => {
     res.status(200).send("Hello, How can we help you!!!");
   });
+   //can be used to serve files directly and with custom url
+  /**
+   * Endpoint:http://localhost:7000/help (Help)
+   * Access: Public
+   * METHOD: GET
+   */
+  app.get("/faq", (req, res) => {
+    res.status(200).sendFile(`${publicPath}/faq.html`);
+  });
 
   /**
    * Started server on Specific ports
