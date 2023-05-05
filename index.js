@@ -83,9 +83,9 @@ node --experimental-modules myCode.js
   /**
    * Started server on Specific ports
    */
-  app.listen(process.env.PORT, () => {
+  app.listen(process.env.DEV_PORT, () => {
     console.log(
-      `Listening on ${process.env.PORT}: http://localhost:${process.env.PORT}/`
+      `Listening on ${process.env.DEV_PORT}: http://localhost:${process.env.DEV_PORT}/`
     );
   });
 } catch (error) {
