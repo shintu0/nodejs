@@ -1,5 +1,30 @@
 import { client } from "./index.js";
 
+/*
+            ***DATA***
+---------------------------------------------
+{
+  "_id": {
+    "$oid": "6454c11a087d1f0b54a41512"
+  },
+  "name": "John Wick",
+  "group": "A",
+  "role": "AGENT",
+  "salary": 10000
+}
+---------------------------------------------
+{
+  "_id": {
+    "$oid": "6454c11a087d1f0b54a41512"
+  },
+  "name": "John Wick",
+  "group": "A",
+  "role": "AGENT",
+  "salary": 10000
+}
+---------------------------------------------
+*/
+
 //READ
 async function readData(){
     try {
@@ -47,7 +72,7 @@ async function deleteData(){
         await client.connect();
         const db=client.db('ecom');
         const usersCollection=db.collection('users');
-        const results=await usersCollection.deleteOne({name:"Sintu"});
+        const results=await usersCollection.deleteOne({name:"Sintu Tiwari"});
         console.log(results.acknowledged,results.deletedCount);
        
       } catch (error) {
@@ -59,3 +84,8 @@ async function deleteData(){
 }
 
 await deleteData();
+
+
+//update
+
+db.users.updateMany({group:{$eq:"A"}},{$set:{salary:10000}})

@@ -3,7 +3,8 @@ import * as dotenv from "dotenv";
 
 dotenv.config();
 export const client = new MongoClient(
-  process.env.DB_URI ,
+  process.env.DB_URI ||
+    `mongodb+srv://isintu:isintu@cluster0.p3zkqum.mongodb.net/?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
