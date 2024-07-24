@@ -5,8 +5,8 @@ import path from "path";
 import userRouter from "./src/routes/users/index.js";
 import { adminRouter } from "./src/routes/users/admin.js";
 
+export const app = express(); //Initialized express app
 try {
-  const app = express(); //Initialized express app
   dotenv.config(); //configuring env variables
   // Parse JSON bodies
   app.use(express.json());
