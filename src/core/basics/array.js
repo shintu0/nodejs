@@ -55,3 +55,58 @@ result=tempArray.includes("c");//return if particular pattern not found
 console.log("Includes:"+result); 
 
 result=tempArray.indexOf("c")
+
+// -----------------------------------IN CASE- -------------------------------------------
+//sorting array
+
+let users = [
+  {
+    id: 1,
+    name: "John Doe",
+    email: "john.doe@example.com",
+    age: 30,
+    occupation: "Software Engineer"
+  },
+  {
+    id: 2,
+    name: "Jane Smith",
+    email: "jane.smith@example.com",
+    age: 25,
+    occupation: "Marketing Manager"
+  },
+  {
+    id: 3,
+    name: "Bob Johnson",
+    email: "bob.johnson@example.com",
+    age: 40,
+    occupation: "Sales Representative"
+  },
+  {
+    id: 4,
+    name: "Alice Brown",
+    email: "alice.brown@example.com",
+    age: 28,
+    occupation: "Graphic Designer"
+  },
+  {
+    id: 5,
+    name: "Mike Davis",
+    email: "mike.davis@example.com",
+    age: 35,
+    occupation: "Product Manager"
+  }
+];
+console.log(users.sort());
+let data=users.sort((a,b)=>{
+  if(a.age>b.age) return 1;
+  if(a.age<b.age) return -1;
+  if(a.age=b.age) return 0;
+}).map(user=>({name:user.name,age:user.age}))
+console.log(data.reverse())
+
+console.log(users.find(user=>user.id===1))
+console.log(users.includes(users.find(user=>user.id===1)))
+console.log(users.some(user=>user.age>25))
+console.log(">>>>>>>>>>>>>>>>>>>>")
+console.log(users.flat()) //just convert the nested array in one simple array
+console.log(">>>>>>>>>>>>>>>>>>>>")

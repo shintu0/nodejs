@@ -2,5 +2,20 @@
     "cSpell.words": [
         "ecom",
         "isintu"
+    ],
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "SQL",
+            "username": "root",
+            "database": "task_management"
+        }
     ]
 }
