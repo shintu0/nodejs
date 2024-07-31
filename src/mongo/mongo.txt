@@ -1,0 +1,73 @@
+mongo store data in BSON(have more data types then JSON and space efficient also fast) and view in JSON
+
+mongorestor -- export in BSON
+mongodump -- import in BSON
+
+mongoExport --export in JSOn
+mongoImport --import in JSON
+
+MQL- find updateMany delete insertMany
+
+relational operators
+$ne
+$eq
+$lt
+$gt
+$lt
+$gte
+
+--logical operators
+$and $or $nor :[<expression>,<expression>]
+$not:{<expression>}
+
+$not -- only used with other logical operators
+
+$expr --> to evaluate the expression based on the variables(variable should attached wit $ like $variable) within same document to evaluate an expression
+
+arrayName: {$size:10, $all:["itemToBeMatch"]} will match array of length 10 having itemToBeMatch in it
+$push:{ arr:"x"} --> will push to array or create new array and push to it
+
+Projection
+
+find({<query>},{projection}) ie find({var1:"val1"},{field1:1 field2:1}) return list with field1 and field 2
+find({<query>},{projection}) ie find({var1:"val1"},{field1:0 field2:0}) return list without field1 and field 
+
+can't mix 0 and 1 in projection except for _id=0
+
+
+for array projection
+find({<query>},{projection}) ie find({var1:"val1"},{field1:{$eleMatch:{score:{"$gt:85} }} field2:0}) may return some id for extra document(data)
+
+$eleMatch can be used directly in query find({field1:{$eleMatch:{score:{"$gt:85} }}})
+
+
+use . (dot) notation to match subdocument(nested object)
+persons=[{firstName:"Mark" , lastName:"Zuckerberg"}]
+for array we can use find({"persons.0.firstName":"Mark"})
+ we can also use regex as follows
+ {"persons.0.firstName":{$regex:"Zuc\w+"}}
+ ---------------------------------------------------------------------------------------------------------------------------------------------
+ Instead of find we can use aggregation Frame work
+ 
+ db.<collection>.aggregate([
+                             {"$match":{"<field1>":"value1"}},
+                             {"$project":{"<field1>":1}}
+                             ]); 
+Pipeline:
+execution order match->project->...
+ ------------------------------------------------------------------------
+ 
+ db.<collection>.aggregate([
+                             {"$project":{"<field1>":1}},
+                             {"$group":{"newKey":"$<field1>.property","newKey1":{$sum:"field1.property1"}}
+                             ]); 
+Factory Pipeline:
+execution order project->group->...
+field1 should be same in both level because of eduction order supply
+like group by in sql
+
+example:
+db.listingsAndReviews.aggregate([{$project:{room_type:1,beds:1}},{$group:{"_id":"$room_type","totalBeds":{$sum:"$beds"}}}])
+
+
+sort limit and indexes
