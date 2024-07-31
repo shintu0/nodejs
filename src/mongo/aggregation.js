@@ -1,5 +1,5 @@
 /*
-As an AI language model, I can provide you with some basic aggregation topics in MongoDB: 
+Some basic aggregation topics in MongoDB: 
  
 1. Grouping and Aggregating Data 
 2. Using the $match operator 

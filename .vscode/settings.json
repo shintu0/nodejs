@@ -1,7 +1,12 @@
 {
     "cSpell.words": [
+        "Ankor",
         "ecom",
-        "isintu"
+        "isintu",
+        "mongodump",
+        "mongorestor",
+        "subdocument",
+        "Zuckerberg"
     ],
     "sqltools.connections": [
         {
