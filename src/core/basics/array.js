@@ -12,6 +12,8 @@
 // // 'In-between insertion '
 // console.log(ar.splice(3,1,5));
 // console.log(ar);
+//console.log(ar.splice(4,10,5,6,7,8,9,10,11,12,13)) //<start,delete counts,i,t,e,m,s,...>
+// console.log(ar)
 
 // 'Sorting'
 
