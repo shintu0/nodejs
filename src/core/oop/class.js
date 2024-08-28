@@ -1,3 +1,8 @@
+//Polymorphism when same class extended for multiple other classes
+//abstraction when the complexity of a bank account's internal state (the balance) and provides a simple interface for interacting with it (deposit, withdraw, getBalance).
+//Inheritance when class or interface can be extended along with properties
+//Encapsulation when private data are encapsulated within class and can't be modified directly
+
 class Animal {
   constructor(name) {
     this.name = name;
